@@ -19,31 +19,17 @@
  */
 var list = document.querySelector('#book-list ul');
 
+var books = [];
 
- //Choose the add book form
- const addForm = document.forms['add-book']
- 
- addForm.addEventListener('submit',(e)=>{
-    e.preventDefault();
-     
-    const bookName = document.getElementById('bookname').value;
-    if($.trim( bookName ) === '' || bookName === null)
-    {
-        alert('Please enter a book name');
-        document.getElementById('bookname').value = '';
-    }
-    else{
-        /**
-         * Creating a list element to store the new book.
-         */
-        const li  = document.createElement('li');
+function renderBook(name){
+    const li  = document.createElement('li');
         const bookElement = document.createElement('span');
         const deleteElement = document.createElement('span');
 
         /**
          * Setting the text content of the elements created.
          */
-        bookElement.textContent = bookName;
+        bookElement.textContent = name;
         deleteElement.textContent = 'delete';
 
         /**
@@ -65,7 +51,41 @@ var list = document.querySelector('#book-list ul');
          * Appending the li to the ul(parent element)
          */
         list.appendChild(li);
+}
 
+function loadBooks(){
+    books = JSON.parse(localStorage.getItem('totalBooks'));
+    if(!books){
+        //alert('No books are present for now! Please add some')
+    }
+    else{
+        books.forEach((book)=>{
+        renderBook(book)
+        })
+    }
+}
+
+loadBooks()
+
+ //Choose the add book form
+ const addForm = document.forms['add-book']
+ 
+ addForm.addEventListener('submit',(e)=>{
+    e.preventDefault();
+
+    const bookName = document.getElementById('bookname').value;
+
+    if($.trim( bookName ) === '' || bookName === null)
+    {
+        alert('Please enter a book name');
+        document.getElementById('bookname').value = '';
+    }
+    else{
+        renderBook(bookName);
+
+        books = books || [];
+        books.push(bookName);
+        localStorage.setItem('totalBooks',JSON.stringify(books));
         document.getElementById('bookname').value = '';
 
     }
@@ -78,6 +98,11 @@ var list = document.querySelector('#book-list ul');
  list.addEventListener('click',(e)=>{
 
     if(e.target.className === 'delete'){
+        var index = $(e.target.parentElement).index();
+        books = books || [];
+        if(books)
+        books.splice(index, 1);
+        localStorage.setItem('totalBooks',JSON.stringify(books));
         const li = e.target.parentElement;
         li.parentNode.removeChild(li);
     }
