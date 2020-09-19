@@ -1,0 +1,74 @@
+header{
+    background: lightgray;
+    color: white;
+    text-align: center;
+    display: block;
+    font-size: 90px;
+}
+
+#wrapper{
+    width: 90%;
+    max-width: 960px;
+    margin: 20px auto;
+    border-radius: 6px;
+    box-shadow: 0px 1px 6px rgba(0,0,0,0.2);
+    box-sizing: border-box;
+    padding: 0 0 20px;
+    overflow: hidden;
+    border: 1px solid lightgray;
+}
+
+h2{
+    font-size: 30px;
+    margin-left: 30px;
+    color: lightslategrey;
+}
+
+#book-list li{
+    padding: 20px;
+    border-left: 5px solid #ddd;
+    margin: 20px 10px;
+    list-style-type: none;
+}
+
+#book-list li:hover{
+    border-color: #9361bf;
+}
+
+.delete{
+    background: #9361bf;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    padding: 6px;
+    float: right;
+}
+
+.delete:hover{
+    background: #333;
+}
+
+#add-book{
+    text-align: center;
+}
+
+input[type=text]{
+    width: 75%;
+    text-align: center;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+}
+
+input[type=text]:focus{
+    border: 3px solid #555;
+}
+
+#submit-book{
+    padding: 13px;
+    background-color: lightgray;
+    border-radius: 4px;
+    color: white;
+}
+
