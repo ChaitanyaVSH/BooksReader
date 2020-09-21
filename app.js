@@ -1,8 +1,10 @@
 // list for the ul that displays all the books
 var list = document.querySelector('#book-list ul');
+var finishedList = document.querySelector('#wrapper #finished-books')
 
 //Array to hold all the books in the localStorage, saved while adding and deleting the book
 var books = [];
+var finishedBooks = [];
 
 /**
  * 
@@ -18,18 +20,21 @@ function renderBook(name){
         const li  = document.createElement('li');
         const bookElement = document.createElement('span');
         const deleteElement = document.createElement('span');
+        const finishElement = document.createElement('span');
 
         /**
          * Setting the text content of the elements created.
          */
         bookElement.textContent = name;
         deleteElement.textContent = 'delete';
+        finishElement.textContent = 'finish';
 
         /**
          * Setting the class type to match the CSS of the list elements.
          */
         bookElement.className = 'name';
         deleteElement.className = 'delete';
+        finishElement.className = 'finish';
         /*
         bookElement.classList.add('name'); also works
         */
@@ -39,6 +44,7 @@ function renderBook(name){
          */
         li.appendChild(bookElement);
         li.appendChild(deleteElement);
+        li.appendChild(finishElement);
 
         /**
          * Appending the li to the ul(parent element)
@@ -66,6 +72,20 @@ function loadBooks(){
     }
 }
 loadBooks()
+
+function loadFinishedBooks(){
+
+    finishedBooks = JSON.parse(localStorage.getItem('finishedBooks'));
+    if(!finishedBooks){
+        //alert('No books are present for now! Please add some')
+    }
+    else{
+        finishedBooks.forEach((book)=>{
+        renderFinishedBooks(book)
+        })
+    }
+}
+loadFinishedBooks()
 
 
 
@@ -123,7 +143,51 @@ addForm.addEventListener('submit',(e)=>{
         li.parentNode.removeChild(li);
     }
 
+    if(e.target.className === 'finish'){
+        var index = $(e.target.parentElement).index();
+        books = books || [];
+        if(books)
+        books.splice(index, 1);
+        localStorage.setItem('totalBooks',JSON.stringify(books));
+
+        finishedBooks = finishedBooks || [];
+        finishedBooks.push(e.target.previousElementSibling.previousElementSibling.textContent);
+        localStorage.setItem('finishedBooks',JSON.stringify(finishedBooks));
+        renderFinishedBooks(e.target.previousElementSibling.previousElementSibling.textContent);
+        const li = e.target.parentElement;
+        li.parentNode.removeChild(li);
+
+    }
  })
+
+ function renderFinishedBooks(finishedBookName){
+    const li  = document.createElement('li');
+    const bookElement = document.createElement('span');
+
+    /**
+     * Setting the text content of the elements created.
+     */
+    bookElement.textContent = finishedBookName;
+
+    /**
+     * Setting the class type to match the CSS of the list elements.
+     */
+    bookElement.className = 'name';
+    /*
+    bookElement.classList.add('name'); also works
+    */
+
+    /**
+     * Appending the bookname and delete buttons to the list(li is the parent element to these span elements).
+     */
+    li.appendChild(bookElement);
+
+    /**
+     * Appending the li to the ul(parent element)
+     */
+    finishedList.appendChild(li);
+
+ }
 
 
 /**

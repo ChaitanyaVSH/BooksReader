@@ -35,6 +35,18 @@ h2{
     border-color: #9361bf;
 }
 
+#finished-books li{
+    padding: 20px;
+    border-left: 5px solid lightgreen;
+    margin: 20px 10px;
+    list-style-type: none;
+    color: green;
+}
+
+#finished-books li:hover{
+    border-color: lightgreen;
+}
+
 .delete{
     background: #9361bf;
     border-radius: 4px;
@@ -42,10 +54,21 @@ h2{
     color: white;
     padding: 6px;
     float: right;
+    margin-left: 6px;
 }
 
 .delete:hover{
     background: #333;
+}
+
+.finish{
+    background: orange;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    padding: 6px;
+    float: right;
+    margin-left: 6px;
 }
 
 #add-book{
