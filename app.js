@@ -85,7 +85,6 @@ loadBooks()
 
 
 
-
 /**
  * Adding a new book to the books array whenever the user gives the book name and clicks on submit button.
  * 

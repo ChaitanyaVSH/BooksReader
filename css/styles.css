@@ -71,6 +71,10 @@ h2{
     margin-left: 6px;
 }
 
+.finish:hover{
+    background: black;
+}
+
 #add-book{
     text-align: center;
 }
