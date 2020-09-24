@@ -70,10 +70,6 @@ function loadBooks(){
         renderBook(book)
         })
     }
-}
-loadBooks()
-
-function loadFinishedBooks(){
 
     finishedBooks = JSON.parse(localStorage.getItem('finishedBooks'));
     if(!finishedBooks){
@@ -85,7 +81,7 @@ function loadFinishedBooks(){
         })
     }
 }
-loadFinishedBooks()
+loadBooks()
 
 
 
