@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styles.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <title>BooksReader</title>
-</head>
-<body>
+  </head>
+  <body>
     <div id="wrapper">
-        <header>
-            Books Reader
-        </header>
-        <h2>Books to read</h2>
-        <div id="book-list">
-            <ul>
-            </ul>
-        </div>
-        <form id="add-book">
-            <input type="checkbox" id="hide">
-            <label for="hide">Hide all books</label>
-            <input type="text" placeholder="Add a Book" id="bookname">
-            <input type="submit" id="submit-book">
-        </form>
-        <h2 style="color: green;">Finished Books</h2>
-        <ul id="finished-books">
-        </ul>
+      <header>Books Reader</header>
+      <h2>Books to read</h2>
+      <div id="book-list">
+        <ul></ul>
+      </div>
+      <form id="add-book">
+        <input type="checkbox" id="hide" />
+        <label for="hide">Hide all books</label>
+        <input type="text" placeholder="Add a Book" id="bookname" />
+        <input type="submit" id="submit-book" />
+      </form>
+      <h2 style="color: green">Finished Books</h2>
+      <ul id="finished-books"></ul>
     </div>
-</body>
-<script src="./app.js"></script>
+  </body>
+  <script src="./app.js"></script>
 </html>
